@@ -11,16 +11,15 @@ export class NaticoClient extends EventEmitter {
     if (this.config?.util) this.util = new NaticoClientUtil(this);
   }
   /**
-   *
-   * @param event Add a event to be emitted
+   * Adds an event to be emitted
+   * @param event The event to emit
    */
   addEvent(event: string) {
     this.events[event] = (...args: any[]) => this.emit(event, ...args);
   }
   /**
-   *
+   * Log into discord
    * @param token The token used for logging in
-   * @returns
    */
   async login(token = this.config?.token) {
     if (!token) throw new Error("TOKEN_NOT_PROVIDED");
